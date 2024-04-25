@@ -43,7 +43,14 @@ func calendar() {
 		if d.Weekday() == time.Monday && d.Day() != 1 {
 			fmt.Println()
 		}
-		fmt.Printf("%3d ", d.Day())
+
+		day := d.Day()
+
+		if d.Weekday() == time.Saturday || d.Weekday() == time.Sunday {
+			fmt.Printf("\x1b[1;33m%3d\x1b[0m ", day)
+		} else {
+			fmt.Printf("%3d ", day)
+		}
 	}
 	fmt.Println()
 }
@@ -70,11 +77,15 @@ func printCalendarWithCircle(selectedDay int) {
 		if d.Weekday() == time.Monday && d.Day() != 1 {
 			fmt.Println()
 		}
+
+		day := d.Day()
 		if d.Day() == selectedDay {
 			fmt.Printf("\033[1;31m%3d\033[0m ", d.Day())
+		} else if d.Weekday() == time.Saturday || d.Weekday() == time.Sunday {
+			fmt.Printf("\x1b[1;33m%3d\x1b[0m ", day)
 		} else {
 			fmt.Printf("%3d ", d.Day())
 		}
+
 	}
-	fmt.Println()
 }
