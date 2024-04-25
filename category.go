@@ -34,6 +34,7 @@ func category() {
 
 	showCategories(categories)
 	fmt.Println("Введите номер категории или введите '+' для создания новой:\nДля возврата в главное меню введите start")
+	fmt.Println()
 	input := bufio.NewScanner(os.Stdin)
 	input.Scan()
 	choiceStr := input.Text()

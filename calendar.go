@@ -47,3 +47,34 @@ func calendar() {
 	}
 	fmt.Println()
 }
+func printCalendarWithCircle(selectedDay int) {
+	currentTime := time.Now()
+	year, month, _ := currentTime.Date()
+
+	firstDay := time.Date(year, month, 1, 0, 0, 0, 0, time.UTC)
+	lastDay := firstDay.AddDate(0, 1, -1)
+
+	fmt.Println("Calendar for", month, year)
+	fmt.Println("Mon Tue Wed Thu Fri Sat Sun")
+
+	startDay := int(firstDay.Weekday())
+	if startDay == 0 {
+		startDay = 7
+	}
+
+	for i := 1; i < startDay; i++ {
+		fmt.Print("    ")
+	}
+
+	for d := firstDay; !d.After(lastDay); d = d.AddDate(0, 0, 1) {
+		if d.Weekday() == time.Monday && d.Day() != 1 {
+			fmt.Println()
+		}
+		if d.Day() == selectedDay {
+			fmt.Printf("\033[1;31m%3d\033[0m ", d.Day())
+		} else {
+			fmt.Printf("%3d ", d.Day())
+		}
+	}
+	fmt.Println()
+}

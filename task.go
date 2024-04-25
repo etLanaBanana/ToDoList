@@ -13,6 +13,7 @@ type Task struct {
 }
 
 func addTask(category *Category, categoryFunc func()) {
+	fmt.Println()
 	fmt.Println("Для добавления задачи нажмите +, для выбора категорий введите -\nДля возврата в главное меню введите start")
 	input := bufio.NewScanner(os.Stdin)
 	input.Scan()

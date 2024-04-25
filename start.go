@@ -44,7 +44,9 @@ func start(categories map[int]Category) {
 				fmt.Println("Введите напоминание:")
 				input.Scan()
 				reminder := input.Text()
-				fmt.Println("Напоминание", reminder, "добавлено.")
+				fmt.Println("Напоминание", reminder, "добавлено в календарь.")
+				fmt.Println()
+				printCalendarWithCircle(day)
 				fmt.Println()
 				break
 			}
